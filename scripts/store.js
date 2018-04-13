@@ -23,8 +23,8 @@ const store = (function() {
     removeItem,
     filterBy: null,
     expandedElement: null,
+    errorMsg: null,
     updateFilterBy,
     updateExpandedElement,
-    
   };
 }());

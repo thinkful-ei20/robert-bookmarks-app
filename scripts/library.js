@@ -19,6 +19,7 @@ const library = (function(){
 
   const renderPage = function (){
     let items = store.items;
+
     if (store.addingBookmark) {
       $('.modal').html(`<div class="modalcontainer">
       <span class="closebtn" id="closebtn">X</span>
@@ -50,6 +51,14 @@ const library = (function(){
 
     const htmlString = createHTML(items);
     $('.bookmark-container').html(`<h2>My Book Marks:</h2> ${htmlString}`);
+
+    if (store.expandedElement) {
+      $(`[data-id=${store.expandedElement}]`).children('.expansion-container').html(`
+      <span>Description:</span>
+      <p>${store.items.find(item => item.id === store.expandedElement).desc}</p>
+      <button>Visit Site</button>
+      `);
+    }
   };
 
   const getElementId = function (element) {
@@ -72,12 +81,15 @@ const library = (function(){
         store.addingBookmark = !store.addingBookmark;
         store.addItem(response);
         renderPage();
+      }, (response) =>{
+        console.log(response);
       });
     });
   };
 
   const handleDeletePress = function() {
     $('.bookmark-container').on('click', '.delete', (e) => {
+      e.stopPropagation();
       const id = getElementId(e.currentTarget);
       API.deleteBookmarks(id, () => {
         store.removeItem(id);
@@ -97,6 +109,7 @@ const library = (function(){
     $('.bookmark-container').on('click', '.bookmark', (e) => {
       const id = getElementId(e.currentTarget);
       store.updateExpandedElement(id);
+      renderPage();
     });
   };
 

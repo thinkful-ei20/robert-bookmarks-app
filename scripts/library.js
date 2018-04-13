@@ -125,8 +125,13 @@ const library = (function(){
   const handleElementSelectExpansion = function() {
     $('.bookmark-container').on('click', '.bookmark', (e) => {
       const id = getElementId(e.currentTarget);
-      store.updateExpandedElement(id);
-      renderPage();
+      if (id === store.expandedElement) {
+        store.expandedElement = null;
+        renderPage();
+      }else {
+        store.updateExpandedElement(id);
+        renderPage();
+      }
     });
   };
 

@@ -6,7 +6,18 @@ const API = (function() {
     $.getJSON(BASE_URL, callback);
   };
 
+  const saveNewBookmarks = function (bookmark, callback) {
+    $.ajax({
+      url: BASE_URL,
+      method: 'post',
+      contentType: 'application/JSON',
+      data: JSON.stringify(bookmark),
+      success: callback,
+    });
+  };
+
   return {
     getBookmarks,
+    saveNewBookmarks,
   };
 }());

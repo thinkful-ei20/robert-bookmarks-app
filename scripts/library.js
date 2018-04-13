@@ -7,7 +7,7 @@ const library = (function(){
       <span class="title">${bookmark.title}</span>
       <p>Rating: ${bookmark.rating}</p>
       <div class="expansion-container"></div>
-      <button class="delete"><i class="fa fa-trash"></i>Trash</button>
+      <button class="delete" arai-lablel="delete ${bookmark.title} button"><i class="fa fa-trash"></i>Trash</button>
     </li>
     `;
   };
@@ -50,13 +50,26 @@ const library = (function(){
     if (store.filterBy) items = store.items.filter(item => item.rating >= store.filterBy);
 
     const htmlString = createHTML(items);
-    $('.bookmark-container').html(`<h2>My Book Marks:</h2> ${htmlString}`);
+    $('.bookmark-container').html(htmlString);
+    $('h2').html(`My Book Marks: ${store.items.length}`);
+
+    if (store.errorMsg) {
+      let message = store.errorMsg;
+      if (message.includes('title')) {
+        $('.jsTitle').toggleClass('invalid');
+        $('.jsTitle').after('<p class="errorMessage">A title is Required</p>');
+      }
+      if (message.includes('url')) {
+        $('.jsUrl').toggleClass('invalid');
+        $('.jsUrl').after('<p class="errorMessage">A URL is required and must begin with HTTP(s)://</p>');
+      }
+    }
 
     if (store.expandedElement) {
       $(`[data-id=${store.expandedElement}]`).children('.expansion-container').html(`
       <span>Description:</span>
       <p>${store.items.find(item => item.id === store.expandedElement).desc}</p>
-      <button>Visit Site</button>
+      <a href = "${store.items.find(item => item.id === store.expandedElement).url}">Visit Site</a>
       `);
     }
   };
@@ -64,6 +77,11 @@ const library = (function(){
   const getElementId = function (element) {
     const id = $(element).closest('.bookmark').data('id');
     return id;
+  };
+
+  const handleError = function (response) {
+    store.errorMsg = response.responseJSON.message,
+    renderPage();
   };
 
   const handleSubmitAddForm = function () {
@@ -79,11 +97,10 @@ const library = (function(){
         $('form')[0].reset();
         $('.modal').attr('style', 'display: none');
         store.addingBookmark = !store.addingBookmark;
+        store.errorMsg = null;
         store.addItem(response);
         renderPage();
-      }, (response) =>{
-        console.log(response);
-      });
+      }, handleError);
     });
   };
 

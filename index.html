@@ -17,10 +17,10 @@
   <header>
     <h1>The BookMarks App</h1>
   </header>
-<div>
+<nav>
   <button class="addItem">Add Bookmarks</button>
   <label for="Rating-Filter">Filter by Rating</label>
-  <select class="jsRatingFilter" name="Rating-Filter" id="Rating">
+  <select class="jsRatingFilter" name="Rating-Filter" id="Rating-Filter">
       <option value="">-</option>
       <option value="5">5</option>
       <option value="4">4</option>
@@ -28,12 +28,13 @@
       <option value="2">2</option>
       <option value="1">1</option>
   </select>
-</div>
-<section>
+</nav>
+<Main>
+  <h2 aria-live="polite"></h2>
   <ul class="bookmark-container">
       
   </ul>
-</section>
+</Main>
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>

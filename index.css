@@ -41,13 +41,29 @@ body {
 }
 
 .bookmark-container {
+  padding-top: 2%;
+}
+
+.bookmark-container {
   border: 2px solid black;
   padding-left: 5%;
   padding-right: 5%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .bookmark {
   list-style: none;
   border: 2px solid black;
   margin-bottom: 2%;
+}
+
+.invalid {
+  background: #f9adad;
+}
+
+.errorMessage {
+  color: red;
+  font-size: 10px;
+  font-style: italic;
 }

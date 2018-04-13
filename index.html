@@ -6,6 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>The Bookmarks App</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css"/>
   <link rel="stylesheet" href="index.css">
 
 </head>
@@ -31,7 +32,7 @@
         <input class="jsUrl" name="URL" id="URL">
         <label for="Description">Description</label>
         <input class="jsDescription" name="Description" id="Description">
-        <button type="submit">Submit</button>
+        <button class="submitForm" type="submit">Submit</button>
         <button class="closebtn">Cancel</button>
       </form>
     </div>
@@ -41,7 +42,14 @@
   </header>
 <div>
   <button class="addItem">Add Bookmarks</button>
-  <button>Filter by rating</button>
+  <label for="Rating-Filter">Filter by Rating</label>
+  <select class="jsRatingFilter" name="Rating-Filter" id="Rating">
+      <option value="5">5</option>
+      <option value="4">4</option>
+      <option value="3">3</option>
+      <option value="2">2</option>
+      <option value="1">1</option>
+    </select>
 </div>
 <section>
   <ul class="bookmark-container">

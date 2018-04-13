@@ -28,6 +28,7 @@ $(document).ready(function() {
   handleAddBtn();
   handleCloseBtn();
   handleClickOutsideModal();
+  library.bindEventHandlers();
   API.getBookmarks((bookmarks) => {
     store.items = bookmarks;
     library.renderPage();

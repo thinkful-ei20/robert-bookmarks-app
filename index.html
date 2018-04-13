@@ -12,30 +12,7 @@
 </head>
 <body>
   <div class="modal">
-    <div class="modalcontainer">
-      <span class="closebtn" id="closebtn">X</span>
-      <form>
-        <div id="add-item-header">
-          <h2>Add a new bookmark</h2>
-        </div>
-        <label for="Title">Title</label>
-        <input class="jsTitle" name="Title" id="Title">
-        <label for="Rating">Rating</label>
-        <select class="jsRating" name="Rating" id="Rating">
-          <option value="5">5</option>
-          <option value="4">4</option>
-          <option value="3">3</option>
-          <option value="2">2</option>
-          <option value="1">1</option>
-        </select>
-        <label for="URL">URL</label>
-        <input class="jsUrl" name="URL" id="URL">
-        <label for="Description">Description</label>
-        <input class="jsDescription" name="Description" id="Description">
-        <button class="submitForm" type="submit">Submit</button>
-        <button class="closebtn">Cancel</button>
-      </form>
-    </div>
+    
   </div>
   <header>
     <h1>The BookMarks App</h1>
@@ -44,12 +21,13 @@
   <button class="addItem">Add Bookmarks</button>
   <label for="Rating-Filter">Filter by Rating</label>
   <select class="jsRatingFilter" name="Rating-Filter" id="Rating">
+      <option value="">-</option>
       <option value="5">5</option>
       <option value="4">4</option>
       <option value="3">3</option>
       <option value="2">2</option>
       <option value="1">1</option>
-    </select>
+  </select>
 </div>
 <section>
   <ul class="bookmark-container">

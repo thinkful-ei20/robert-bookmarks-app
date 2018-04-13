@@ -2,13 +2,15 @@
 
 const handleAddBtn = function() {
   $('.addItem').click( () => {
-    $('.modal').attr('style', 'display: block');
     store.addingBookmark = !store.addingBookmark;
+    $('.modal').attr('style', 'display: block');
+    library.renderPage();
   });
 };
 
 const handleCloseBtn = function () {
-  $('.closebtn').click( () => {
+  $('.modal').on('click', '.closebtn', (e) => {
+    e.preventDefault();
     $('.modal').attr('style', 'display: none');
     store.addingBookmark = !store.addingBookmark;
   });
@@ -19,7 +21,7 @@ const handleClickOutsideModal = function () {
     $('.modal').attr('style', 'display: none');
     store.addingBookmark = !store.addingBookmark;
   });
-  $('.modalcontainer').click( (e) => {
+  $('.modal').on('click', '.modalcontainer',  (e) => {
     e.stopPropagation();
   });
 };

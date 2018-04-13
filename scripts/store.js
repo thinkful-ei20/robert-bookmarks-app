@@ -8,10 +8,23 @@ const store = (function() {
     store.items = store.items.filter(item => item.id !== id);
   };
 
+  const updateFilterBy = function(rating) {
+    this.filterBy = rating;
+  };
+
+  const updateExpandedElement = function(id) {
+    this.expandedElement = id;
+  };
+
   return {
     items: [],
     addingBookmark: false,
     addItem,
     removeItem,
+    filterBy: null,
+    expandedElement: null,
+    updateFilterBy,
+    updateExpandedElement,
+    
   };
 }());

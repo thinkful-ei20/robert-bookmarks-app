@@ -70,6 +70,7 @@ const library = (function(){
       <span>Description:</span>
       <p>${store.items.find(item => item.id === store.expandedElement).desc}</p>
       <a href = "${store.items.find(item => item.id === store.expandedElement).url}">Visit Site</a>
+      <button class="editButton">Edit</button>
       `);
     }
   };

@@ -27,6 +27,16 @@ const API = (function() {
     });
   };
 
+  const updateBookmarks = function(id, callback, error) {
+    $.ajax({
+      url: `${BASE_URL}/${id}`,
+      method: 'patch',
+      contentType: 'application/JSON',
+      success: callback,
+      error: error,
+    });
+  };
+
   return {
     getBookmarks,
     saveNewBookmarks,
